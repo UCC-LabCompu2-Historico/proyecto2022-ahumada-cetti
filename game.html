@@ -26,12 +26,13 @@
         <div class="nav-wrapper">
             <div class="col s12">
                 <a href="index.html" class="breadcrumb" id="first_breadcrumb">Food Drop</a>
+                <a href="game.html" class="breadcrumb">Play Game</a>
               </div>
         </div>
     </nav>
 
     <header>
-        <h1>Food Drop</h1>
+        <h1>Play Game</h1>
     </header>
 
     <div class="row">
@@ -42,33 +43,23 @@
         <div class="col s12 m10 l10">
 
             <div class="card horizontal" id="card_principal">
-                <div class="card-stacked">
-                    <div class="card-content">
-                        <div class="row">
-                            <div class="input-field col s12 m6 l6">
-                                <i class="material-icons prefix">account_circle</i>
-                                <input id="nombre_jugador" type="text" class="validate">
-                                <label for="nombre_jugador">Nombre de Jugador</label>
-                            </div>
-                            <div class="input-field col s12 m6 l6">
-                                <select class="icons" id="avatar">
-                                  <option selected value="" data-icon="https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg">Rojo</option>
-                                  <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/verde-1200x839.png">Verde</option>
-                                  <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/azul-1200x839.png">Azul</option>
-                                </select>
-                                <label for="avatar">Avatar</label>
-                              </div>
-                        </div>
-                        <a class="btn-floating btn-large waves-effect waves-light red lighten-3" href="game.html"><i class="material-icons">play_arrow</i></a>
-                    </div>
-                </div>
+                
+                <div id="canvas-container">
+                    <canvas  width="150" height="500">Your browser doesn't support canvas</canvas>
+                 </div>
+
 
             </div>
 
+
+
         </div>
 
-        <div class="col s0 m1 l1">
-        </div>
+
+    </div>
+
+    <div class="col s0 m1 l1">
+    </div>
 
     </div>
 
@@ -81,6 +72,7 @@
                         María Eugenia Castagnola y Daniel Germena</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
+
                 </div>
             </div>
         </div>

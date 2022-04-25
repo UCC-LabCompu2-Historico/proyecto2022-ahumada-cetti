@@ -1,0 +1,21 @@
+h1{
+    text-align: center;
+}
+
+#first_breadcrumb{
+    margin-left: 10px;
+}
+
+#card_principal{
+    text-align: center;
+}
+
+#canvas-container {
+    width: 100%;
+    text-align:center;
+ }
+ 
+.canvas {
+    display: inline;
+}
+      
