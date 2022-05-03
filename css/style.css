@@ -21,12 +21,35 @@ h1{
     display: block; 
     margin: 0 auto;
 }
-      
-footer{
-    position:fixed;
-    bottom:0;
-    left:0;
-    width:100%;
+
+.red.lighten-3 {
+    background-color: #EF9A9A;
+  }
+
+#playbtn:hover{
+    background-color: #F44336 !important;
+}
+
+@media only screen and (min-width: 768px) {
+    footer{
+        position: fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+    }
+}
+
+@media (max-width: 768px)  {
+    footer{
+        
+        bottom:0;
+        left:0;
+        width:100%;
+    }
+}
+
+#game_footer{
+    position: relative;
 }
 
 #logofooter{
