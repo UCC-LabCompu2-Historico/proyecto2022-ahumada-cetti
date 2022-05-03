@@ -17,5 +17,18 @@ h1{
  
 .canvas {
     display: inline;
+    background: #eee; 
+    display: block; 
+    margin: 0 auto;
 }
       
+footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+}
+
+#logofooter{
+    padding-right: 3%;
+}

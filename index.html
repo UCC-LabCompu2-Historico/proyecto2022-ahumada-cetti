@@ -17,7 +17,7 @@
     <meta name="keywords" content="Arcade, Videogames" />
     <meta name="description" content="Videojuego para Laboratorio Informatica II" />
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
         <div class="nav-wrapper">
             <div class="col s12">
                 <a href="index.html" class="breadcrumb" id="first_breadcrumb">Food Drop</a>
-              </div>
+            </div>
         </div>
     </nav>
 
@@ -52,23 +52,26 @@
                             </div>
                             <div class="input-field col s12 m6 l6">
                                 <select class="icons" id="avatar">
-                                  <option selected value="" data-icon="https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg">Rojo</option>
-                                  <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/verde-1200x839.png">Verde</option>
-                                  <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/azul-1200x839.png">Azul</option>
-                                </select>
-                                <label for="avatar">Avatar</label>
-                              </div>
+                                    <option selected value="" data-icon="https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg">Rojo</option>
+                                    <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/verde-1200x839.png">Verde</option>
+                                    <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/azul-1200x839.png">Azul</option>
+                                  </select>
+                                  <label for="avatar">Avatar</label>
+                            </div>
                         </div>
-                        <a class="btn-floating btn-large waves-effect waves-light red lighten-3" href="game.html"><i class="material-icons">play_arrow</i></a>
+                        <a class="btn-floating btn-large waves-effect waves-light red lighten-3" id="playbtn"><i
+                                class="material-icons">play_arrow</i></a>
                     </div>
                 </div>
-
             </div>
+            
 
+            
         </div>
+    </div>
 
-        <div class="col s0 m1 l1">
-        </div>
+    <div class="col s0 m1 l1">
+    </div>
 
     </div>
 
@@ -86,10 +89,57 @@
         </div>
         <div class="footer-copyright">
             <div class="container">
-                <a class="grey-text text-lighten-4 right" href="#!"><img src="img/favicon.jpg" width="50px" alt="logo de food drop"></a>
+                <a class="grey-text text-lighten-4 left" id="logofooter" href="#!"><img src="img/logoblanco.png"
+                        width="50px" alt="logo de food drop"></a>
+                <a class="grey-text text-lighten-4 left" href="#!"><img src="img/logoucc.png" width="50px"
+                        alt="logo de la Universidad Catolica de Cordoba"></a>
             </div>
         </div>
     </footer>
+
+    <!-- Modal Structure -->
+  <div id="instrucciones" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4>Instrucciones</h4>
+      <p>Minijuego tipo arcade en donde comida y objetos caen del cielo. Atrapa todos los alimentos y no los dejes caer al suelo. Cuidado de no atrapar objetos. Deje que los objetos caigan al suelo para no perder una de sus vidas.</p>
+        <p>Para moverte, puedes usar las flechas del teclado</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="settings" class="modal">
+    <div class="modal-content">
+      <h4>Configuraciones</h4>
+      <p>Velocidad de objetos al comenzar</p>
+      <p class="range-field">
+        <input type="range" id="vel" min="0" max="50" value="10" />
+      </p>
+      <p>Velocidad de movimiento de paleta con flechas</p>
+      <p class="range-field">
+        <input type="range" id="vel" min="0" max="50" value="10" />
+      </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+    </div>
+  </div>
+
+
+
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large white">
+            <i class="large material-icons black-text">settings</i>
+        </a>
+        <ul>
+            <li><a class="btn-floating grey lighten-2" id="mute"><i class="material-icons black-text" id="muteicon">volume_up</i></a></li>
+            <li><a class="btn-floating grey lighten-2"><i class="material-icons black-text modal-trigger" href="#instrucciones">info_outline</i></a></li>
+            <li><a class="btn-floating grey lighten-2"><i class="material-icons black-text modal-trigger" href="#settings">build</i></a></li>
+        </ul>
+    </div>
+
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
