@@ -15,20 +15,27 @@ document.addEventListener('DOMContentLoaded', function () {
     var instances = M.Modal.init(elems);
 });
 
+let music_player = document.getElementById("music_player");
 /*
 * Al hacer click en el boton, desactiva o activa la musica
 * @method onclick
 * @return null
 */
-var volume = true;
+var mute_volume = true;
 document.getElementById("mute").onclick = function(){
-  if (volume){
-    document.getElementById("muteicon").textContent="volume_off";
-    volume = false;
+  if (mute_volume){
+    document.getElementById("muteicon").textContent="volume_up";
+    music_player.src = "media/song.mp3";
+    music_player.load();
+    music_player.play();
+    music_player.muted = false;
+
+    mute_volume = false;
   }
   else{
-    document.getElementById("muteicon").textContent="volume_up";
-    volume = true;
+    music_player.muted = true;
+    document.getElementById("muteicon").textContent="volume_off";
+    mute_volume = true;
   }
 };
 
@@ -43,6 +50,9 @@ document.getElementById("playbtn").onclick = function(){
     M.toast({html: 'Ingrese un nombre'})
   }
   else{
+    localStorage.setItem("nombre", document.getElementById("nombre_jugador").value);  
+    localStorage.setItem("color", document.getElementById("color_jugador").value); 
+    localStorage.setItem("mute_volume", mute_volume);  
     window.location.replace("game.html");
   }
 }

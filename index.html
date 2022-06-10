@@ -10,9 +10,9 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Favicon-->
-    <link rel="icon" href="img/favicon.jpg" type="image/x-icon">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
     <!--Title-->
-    <title>Inicio | Food Drop</title>
+    <title>Inicio | Dot Drop</title>
     <meta name="author" content="Ahumada y Cetti" />
     <meta name="keywords" content="Arcade, Videogames" />
     <meta name="description" content="Videojuego para Laboratorio Informatica II" />
@@ -25,13 +25,14 @@
     <nav>
         <div class="nav-wrapper">
             <div class="col s12">
-                <a href="index.html" class="breadcrumb" id="first_breadcrumb">Food Drop</a>
+                <a href="index.html" class="breadcrumb" id="first_breadcrumb">Dot Drop</a>
             </div>
         </div>
     </nav>
 
     <header>
-        <h1>Food Drop</h1>
+        <h1>Dot Drop</h1>
+        <audio loop id="music_player"></audio>
     </header>
 
     <div class="row">
@@ -51,10 +52,10 @@
                                 <label for="nombre_jugador">Nombre de Jugador</label>
                             </div>
                             <div class="input-field col s12 m6 l6">
-                                <select class="icons" id="avatar">
-                                    <option selected value="" data-icon="https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg">Rojo</option>
-                                    <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/verde-1200x839.png">Verde</option>
-                                    <option value="" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/azul-1200x839.png">Azul</option>
+                                <select class="icons" id="color_jugador">
+                                    <option selected value="Rojo" data-icon="https://bangbranding.com/blog/wp-content/uploads/2016/09/700x511_SliderInterior.jpg">Rojo</option>
+                                    <option value="Verde" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/verde-1200x839.png">Verde</option>
+                                    <option value="Azul" data-icon="https://biblioteca.acropolis.org/wp-content/uploads/2014/12/azul-1200x839.png">Azul</option>
                                   </select>
                                   <label for="avatar">Avatar</label>
                             </div>
@@ -90,7 +91,7 @@
         <div class="footer-copyright">
             <div class="container">
                 <a class="grey-text text-lighten-4 left" id="logofooter" href="#!"><img src="img/logoblanco.png"
-                        width="50px" alt="logo de food drop"></a>
+                        width="50px" alt="logo de dot drop"></a>
                 <a class="grey-text text-lighten-4 left" href="#!"><img src="img/logoucc.png" width="50px"
                         alt="logo de la Universidad Catolica de Cordoba"></a>
             </div>
@@ -111,25 +112,6 @@
         </div>
     </div>
 
-    <!-- Modal Structure -->
-    <div id="settings" class="modal">
-        <div class="modal-content">
-            <h4>Configuraciones</h4>
-            <p>Velocidad de objetos al comenzar</p>
-            <p class="range-field">
-                <input type="range" id="vel" min="0" max="50" value="10" />
-            </p>
-            <p>Velocidad de movimiento de paleta con flechas</p>
-            <p class="range-field">
-                <input type="range" id="vel" min="0" max="50" value="10" />
-            </p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
-        </div>
-    </div>
-
-
 
     <div class="fixed-action-btn">
         <a class="btn-floating btn-large white">
@@ -137,11 +119,9 @@
         </a>
         <ul>
             <li><a class="btn-floating grey lighten-2" id="mute"><i class="material-icons black-text"
-                        id="muteicon">volume_up</i></a></li>
+                        id="muteicon">volume_off</i></a></li>
             <li><a class="btn-floating grey lighten-2"><i class="material-icons black-text modal-trigger"
                         href="#instrucciones">info_outline</i></a></li>
-            <li><a class="btn-floating grey lighten-2"><i class="material-icons black-text modal-trigger"
-                        href="#settings">build</i></a></li>
         </ul>
     </div>
 

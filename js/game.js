@@ -10,17 +10,45 @@ var flecha_der_presionada = false;
 var flecha_izq_presionada = false;
 var puntaje = 0;
 var vidas = 3;
-var probabilidad_pelota_mala = 0; //Mientras mas chico mas probable a que te toque una mala
+var probabilidad_pelota_mala = 3; //Mientras mas chico mas probable a que te toque una mala
+var tiempo_para_pelota_nueva = 2000;
+var count_para_pelota_nueva = 0;
+var rapidez_pelotas = 1;
 var pelotas = [];
+var musica = false;
+var color = "#ee6e73";
+
+if (localStorage.getItem("color") == "Rojo") {
+  color = "#ee6e73";
+}
+else if (localStorage.getItem("color") == "Verde") {
+  color = "#2e7d32";
+}
+else if (localStorage.getItem("color") == "Azul") {
+  color = "#0277bd";
+}
 
 document.addEventListener("keydown", key_presionada, false);
 document.addEventListener("keyup", key_soltada, false);
 document.addEventListener("mousemove", movimiento_mouse, false);
 
+/*
+* Funcion que devuelve un numero aleatorio segun el rango establecido
+* @method random
+* @param {int} min - Extremo minimo del rango
+* @param {int} max - Extremo maximo del rango
+* @return Numero aleatorio segun el rango establecido
+*/
 function random(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
 
+/*
+* Cambia los booleanos cuando una flecha esta presionada para mover la paleta
+* @method key_presionada
+* @param {Event} e - Evento de la key presionada
+* @return null
+*/
 function key_presionada(e) {
   if (e.keyCode == 39) {
     flecha_der_presionada = true;
@@ -29,6 +57,12 @@ function key_presionada(e) {
     flecha_izq_presionada = true;
   }
 }
+/*
+* Cambia los booleanos cuando se suelta una flecha para dejar de mover la paleta
+* @method key_soltada
+* @param {Event} e - Evento de la key soltada
+* @return null
+*/
 function key_soltada(e) {
   if (e.keyCode == 39) {
     flecha_der_presionada = false;
@@ -37,13 +71,34 @@ function key_soltada(e) {
     flecha_izq_presionada = false;
   }
 }
+/*
+* Detecta el movimiento del mouse y mueve la paleta con respecto al mismo
+* @method movimiento_mouse
+* @param {Event} e - Evento del movimiento del mouse
+* @return null
+*/
 function movimiento_mouse(e) {
   var relativeX = e.clientX - canvas.offsetLeft;
   if (relativeX > 0 && relativeX < canvas.width) {
     paleta_en_x = relativeX - anchoPaleta / 2;
   }
+/*
+  if (!musica){
+    if (localStorage.getItem("mute_volume")) {
+      music_player.src = "media/song.mp3";
+      music_player.load();
+      music_player.play();
+    }
+    musica = true;
+  }
+*/
 }
 
+/*
+* Mueve la paleta segun las flechas presionadas
+* @method movimiento_flechas
+* @return null
+*/
 function movimiento_flechas() {
   if (flecha_der_presionada && paleta_en_x < canvas.width - anchoPaleta) {
     paleta_en_x += 7;
@@ -53,27 +108,44 @@ function movimiento_flechas() {
   }
 }
 
+/*
+* Dibuja la paleta
+* @method paleta
+* @return null
+*/
 function paleta() {
   ctx.beginPath();
   ctx.rect(paleta_en_x, canvas.height - alturaPaleta, anchoPaleta, alturaPaleta);
-  ctx.fillStyle = "#ee6e73";
+  ctx.fillStyle = color;
   ctx.fill();
   ctx.closePath();
 }
 
+/*
+* Agrega una nueva pelota al vector pelotas
+* con coordenadas x random y decide si va a ser buena o mala
+* @method pelota_nueva
+* @return null
+*/
 function pelota_nueva() {
   pelotas.push({ x: random(10, canvas.width - 10), y: -5, mala: random(0, probabilidad_pelota_mala) });
 }
 
+/*
+* Dibuja las pelotas segun el vector pelotas
+* @method dibujar_pelotas
+* @return null
+*/
 function dibujar_pelotas() {
   for (let i = 0; i < pelotas.length; i++) {
+    pelotas[i].y += rapidez_pelotas;
     ctx.beginPath();
     ctx.arc(pelotas[i].x, pelotas[i].y, radio_pelota, 0, Math.PI * 2);
     if (pelotas[i].mala == 0) {
       ctx.fillStyle = "#000000";;
     }
     else {
-      ctx.fillStyle = "#ee6e73";
+      ctx.fillStyle = color;
     }
 
     ctx.fill();
@@ -81,6 +153,12 @@ function dibujar_pelotas() {
   }
 }
 
+/*
+* Detecta las colisiones de las pelotas tanto con la paleta como con el piso
+* y actua en consecuencia sumando puntos o restando vidas
+* @method detectar_colisiones
+* @return null
+*/
 function detectar_colisiones() {
   for (let i = 0; i < pelotas.length; i++) {
     //Si esta a la altura de la paleta
@@ -97,7 +175,6 @@ function detectar_colisiones() {
         }
         //Si es buena
         else {
-          //alert("FOL")
           puntaje++;
         }
 
@@ -111,6 +188,7 @@ function detectar_colisiones() {
         vidas--;
         if (vidas == 0) {
           alert("GAME OVER");
+          document.location.reload();
         }
       }
       pelotas.shift();
@@ -119,17 +197,35 @@ function detectar_colisiones() {
   }
 }
 
+/*
+* Dibuja el puntaje obtenido al lado del nombre del jugador
+* @method dibujar_puntaje
+* @return null
+*/
 function dibujar_puntaje() {
+  nombre = localStorage.getItem("nombre");
   ctx.font = "16px Arial";
   ctx.fillStyle = "#000000";
-  ctx.fillText("Puntaje: " + puntaje, 8, 20);
+  ctx.fillText(nombre + " - Puntaje: " + puntaje, 8, 20);
 }
+
+/*
+* Dibuja las vidas restantes del jugador
+* @method dibujar_vidas
+* @return null
+*/
 function dibujar_vidas() {
   ctx.font = "16px Arial";
   ctx.fillStyle = "#000000";
   ctx.fillText("Vidas: " + vidas, canvas.width - 65, 20);
 }
 
+/*
+* Loop principal del juego, llama a todos los metodos
+* para su correcto funcionamiento
+* @method juego
+* @return null
+*/
 function juego() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   paleta();
@@ -137,13 +233,19 @@ function juego() {
   dibujar_vidas();
   dibujar_pelotas();
   detectar_colisiones();
-
-
-  for (let i = 0; i < pelotas.length; i++) {
-    pelotas[i].y += 1;
-  }
   movimiento_flechas();
+
+  //Aumentar dificulad segun paso del tiempo
+  rapidez_pelotas += 0.0005;
+
+  count_para_pelota_nueva += 10;
+  if (count_para_pelota_nueva == tiempo_para_pelota_nueva) {
+    pelota_nueva();
+    count_para_pelota_nueva = 0;
+    tiempo_para_pelota_nueva -= 20;
+  }
+
+
 }
 
 setInterval(juego, 10);
-setInterval(pelota_nueva, 2000);
