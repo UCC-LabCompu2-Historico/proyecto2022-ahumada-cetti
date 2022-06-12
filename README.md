@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://pbs.twimg.com/profile_images/1237321762708361216/thRQK9ft_400x400.jpg" width="100">
+  <img src="https://i.ibb.co/Ptcsqkm/favicon.png" width="100">
   <br />
 
 </p>
@@ -19,7 +19,7 @@
 
 ---
 
-Minijuego tipo arcade en donde comida y objetos caen del cielo. Atrapa todos los alimentos y no los dejes caer al suelo. Cuidado de no atrapar objetos. Deje que los objetos caigan al suelo para no perder una de sus vidas.
+Minijuego tipo arcade en donde comida y objetos caen del cielo. Atrapa todos los puntos de color y no los dejes caer al suelo. Cuidado de no atrapar los puntos negros. Deje que los objetos puntos negros al suelo para no perder una de sus vidas.
 
 ## Features:
 
