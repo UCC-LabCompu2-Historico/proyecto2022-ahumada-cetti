@@ -82,16 +82,6 @@ function movimiento_mouse(e) {
   if (relativeX > 0 && relativeX < canvas.width) {
     paleta_en_x = relativeX - anchoPaleta / 2;
   }
-/*
-  if (!musica){
-    if (localStorage.getItem("mute_volume")) {
-      music_player.src = "media/song.mp3";
-      music_player.load();
-      music_player.play();
-    }
-    musica = true;
-  }
-*/
 }
 
 /*

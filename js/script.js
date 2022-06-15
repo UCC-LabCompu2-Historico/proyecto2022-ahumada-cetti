@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var instances = M.FloatingActionButton.init(elems);
 
   var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
+  var instances = M.Modal.init(elems);
 });
 
 let music_player = document.getElementById("music_player");
@@ -22,9 +22,9 @@ let music_player = document.getElementById("music_player");
 * @return null
 */
 var mute_volume = true;
-document.getElementById("mute").onclick = function(){
-  if (mute_volume){
-    document.getElementById("muteicon").textContent="volume_up";
+document.getElementById("mute").onclick = function () {
+  if (mute_volume) {
+    document.getElementById("muteicon").textContent = "volume_up";
     music_player.src = "media/song.mp3";
     music_player.load();
     music_player.play();
@@ -32,9 +32,9 @@ document.getElementById("mute").onclick = function(){
 
     mute_volume = false;
   }
-  else{
+  else {
     music_player.muted = true;
-    document.getElementById("muteicon").textContent="volume_off";
+    document.getElementById("muteicon").textContent = "volume_off";
     mute_volume = true;
   }
 };
@@ -45,14 +45,14 @@ document.getElementById("mute").onclick = function(){
 * @method onclick
 * @return null
 */
-document.getElementById("playbtn").onclick = function(){
-  if (document.getElementById("nombre_jugador").value == ""){
-    M.toast({html: 'Ingrese un nombre'})
+document.getElementById("playbtn").onclick = function () {
+  if (document.getElementById("nombre_jugador").value == "") {
+    M.toast({ html: 'Ingrese un nombre' })
   }
-  else{
-    localStorage.setItem("nombre", document.getElementById("nombre_jugador").value);  
-    localStorage.setItem("color", document.getElementById("color_jugador").value); 
-    localStorage.setItem("mute_volume", mute_volume);  
+  else {
+    localStorage.setItem("nombre", document.getElementById("nombre_jugador").value);
+    localStorage.setItem("color", document.getElementById("color_jugador").value);
+    localStorage.setItem("mute_volume", mute_volume);
     window.location.replace("game.html");
   }
 }
