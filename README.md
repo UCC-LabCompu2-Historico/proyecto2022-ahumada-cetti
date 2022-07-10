@@ -6,7 +6,7 @@
   <p align="center">
     Laboratorio de Computacion II
     <br />
-    <a href="https://ucc-labcompu2.github.io/proyecto2022-ahumada-cetti/"><strong>Ver GithubPages »</strong></a>
+    <a href="https://ucc-labcompu2-Historico.github.io/proyecto2022-ahumada-cetti/"><strong>Ver GithubPages »</strong></a>
     <br />
     <br />
     <a href="https://github.com/JulianAhumada86">Ahumada Julian</a>
